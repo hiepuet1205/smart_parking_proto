@@ -5,6 +5,7 @@ package users;
 service UserService {
   rpc Register(RegisterRequest) returns (RegisterResponse);
   rpc Login(LoginRequest) returns (LoginResponse);
+  rpc GetUserByEmail(GetUserByEmailRequest) returns (GetUserByEmailResponse);
 }
 
 message RegisterRequest {
@@ -13,8 +14,8 @@ message RegisterRequest {
 }
 
 message RegisterResponse {
-  string access_token = 1;
-  string refresh_token = 2;
+  string accessToken = 1;
+  string refreshToken = 2;
 }
 
 message LoginRequest {
@@ -23,6 +24,20 @@ message LoginRequest {
 }
 
 message LoginResponse {
-  string access_token = 1;
-  string refresh_token = 2;
+  string accessToken = 1;
+  string refreshToken = 2;
+}
+
+message GetUserByEmailRequest {
+  string email = 1;
+}
+
+message User {
+  int32 id = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message GetUserByEmailResponse {
+  User user = 1;
 }
